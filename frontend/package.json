@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "validate:commit": "npx --no-install lint-staged && npm run build",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
@@ -40,6 +41,6 @@
     ]
   },
   "simple-git-hooks": {
-    "pre-commit": "cd frontend && npx --no-install lint-staged"
+    "pre-commit": "cd frontend && npm run validate:commit"
   }
 }
