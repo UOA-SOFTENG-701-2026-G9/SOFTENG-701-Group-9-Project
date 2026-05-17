@@ -10,7 +10,8 @@
     "build": "npm run build:ts && npm run build:web",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "react": "^19.2.6",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "lint-staged": "^17.0.5",
+    "simple-git-hooks": "^2.13.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.3",
     "vite": "^8.0.12"
@@ -36,5 +38,8 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "cd frontend && npx --no-install lint-staged"
   }
 }
