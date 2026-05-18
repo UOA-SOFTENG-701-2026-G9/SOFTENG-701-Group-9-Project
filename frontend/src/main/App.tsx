@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { API_URL } from '../config'
 import '../resources/App.css'
+import Navbar from './components/Navbar'
 
 function App() {
   const [message, setMessage] = useState('')
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <div>Message from backend: {message}</div>
     </div>
   )
