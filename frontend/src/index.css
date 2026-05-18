@@ -19,8 +19,11 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  /* Fluid base font-size: scales between 14px and 18px depending on viewport */
+  --base-font-size: clamp(14px, 0.9rem + 0.6vw, 18px);
+  font-size: var(--base-font-size);
+  line-height: 1;
+  letter-spacing: 0.018rem;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -29,9 +32,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Removed fixed responsive breakpoint; sizes below use fluid clamps */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,32 +72,31 @@ body {
 }
 
 h1,
-h2 {
+h2, 
+h3 {
   font-family: 'Holtwood One SC', var(--heading);
   font-weight: 500;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: clamp(2.25rem, 1.8rem + 3.2vw, 4rem);
+  letter-spacing: -0.105rem;
+  margin: clamp(0.9rem, 0.7rem + 0.6vw, 2rem) 0;
 }
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: clamp(1.5rem, 1.2rem + 2.2vw, 3rem);
+  letter-spacing: -0.015rem;
+  margin: 0 0 0.5rem;
+}
+h3 {
+  font-size: clamp(1.25rem, 1.05rem + 1.6vw, 2rem);
+  letter-spacing: -0.015rem;
+  margin: 0 0 0.5rem;
 }
 p {
-  margin: 0;
+  font-size: clamp(0.875rem, 0.9rem + 0.2vw, 1.125rem);
+  color: white;
 }
 
 code,
@@ -108,8 +108,8 @@ code,
 }
 
 code {
-  font-size: 15px;
-  line-height: 135%;
+  font-size: clamp(.82rem, .9rem - 0.1vw, .95rem);
+  line-height: 1.35;
   padding: 4px 8px;
   background: var(--code-bg);
 }
