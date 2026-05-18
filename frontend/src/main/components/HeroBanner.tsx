@@ -7,7 +7,7 @@ const HeroBanner = () => {
 
 const HomeHeroBanner = () => {
   return (
-    <div className="relative w-full h-[70vh] bg-gradient-to-b from-[#1B7D63] to-[#4DB895]">
+    <div className="relative w-full h-[70vh] bg-gradient-to-b from-[#1B7D63] to-[#56C29E]">
       <div className="absolute top-[300px] left-[400px] transform -translate-x-1/2 -translate-y-1/2">
         <div className="flex flex-col items-start">
           <h1 className="">Stay Safe</h1>

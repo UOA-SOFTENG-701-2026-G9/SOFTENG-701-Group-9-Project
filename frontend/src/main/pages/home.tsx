@@ -1,8 +1,13 @@
 import { HomeHeroBanner } from "../components/HeroBanner"
+import AmberBanner from "../components/home/AmberBanner"
 
 const Home = () => {
   return (
-    <HomeHeroBanner />
+    <div className="flex flex-col">
+      <HomeHeroBanner />
+      <AmberBanner />
+    </div>
+   
   )
 }
 
