@@ -1,4 +1,4 @@
-import { HomeHeroBanner } from "../components/HeroBanner"
+import HomeHeroBanner from "../components/home/HomeHeroBanner"
 import AmberBanner from "../components/home/AmberBanner"
 import ModuleSection from "../components/home/ModuleSection"
 

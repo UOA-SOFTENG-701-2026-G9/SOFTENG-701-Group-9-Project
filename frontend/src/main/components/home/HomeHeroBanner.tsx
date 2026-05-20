@@ -1,10 +1,3 @@
-const HeroBanner = () => {
-  return (
-    <div>
-    </div>
-  )
-}
-
 const HomeHeroBanner = () => {
   return (
     <div className="relative w-full h-[70vh] bg-gradient-to-b from-[#1B7D63] to-[#56C29E]">
@@ -22,13 +15,13 @@ const HomeHeroBanner = () => {
       </div>
       <div className="absolute bottom-0 left-0 w-full h-auto z-10">
         <div className="flex flex-row">
-          <img src="/ferns.png" alt="Kiwi Smarts" className=" w-1/3 h-auto object-cover" />
-          <img src="/ferns.png" alt="Kiwi Smarts" className="w-1/3 h-auto object-cover" />
-          <img src="/ferns.png" alt="Kiwi Smarts" className="w-1/3 h-auto object-cover" />
+          <img src="/home/ferns.png" alt="Kiwi Smarts" className=" w-1/3 h-auto object-cover" />
+          <img src="/home/ferns.png" alt="Kiwi Smarts" className="w-1/3 h-auto object-cover" />
+          <img src="/home/ferns.png" alt="Kiwi Smarts" className="w-1/3 h-auto object-cover" />
         </div>
       </div>
     </div>
   )
 }
 
-export { HeroBanner, HomeHeroBanner } 
+export default HomeHeroBanner;
