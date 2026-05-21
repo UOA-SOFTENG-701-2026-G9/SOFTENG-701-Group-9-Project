@@ -1,26 +1,21 @@
-import { useState, useEffect } from 'react'
-import { API_URL } from '../config'
+import { Routes, Route } from 'react-router-dom'
 import '../resources/App.css'
+import Navbar from './components/Navbar'
+import Home from './pages/home'
+import About from './pages/about'
+import Modules from './pages/modules'
+import Footer from './components/Footer'
 
 function App() {
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    const fetchMessage = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api`)
-        const data = await response.json()
-        setMessage(data.message || '')
-      } catch (error) {
-        console.error('Failed to fetch message:', error)
-      }
-    }
-    fetchMessage()
-  }, [])
-
   return (
     <div>
-      <div>Message from backend: {message}</div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/modules" element={<Modules />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <Footer />
     </div>
   )
 }
