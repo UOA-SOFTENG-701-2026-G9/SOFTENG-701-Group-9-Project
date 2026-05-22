@@ -6,6 +6,7 @@ import SortBox from "../components/question-sort/SortBox.tsx"
 import Sortable from "../components/question-sort/Sortable.tsx";
 
 import safeFace from '../../resources/icons/Safe-Face.png';
+import unsafeFace from '../../resources/icons/Unsafe-Face.png';
 
 interface SortableItem {
   id: string;
@@ -14,6 +15,9 @@ interface SortableItem {
 }
 
 const QuestionSort = () => {
+  const sortableCardClass = "w-[389px] h-[77px] rounded-[20px] border-[5px] border-[#3B6D11] bg-white flex items-center justify-center";
+  const headingTextClass = "text-[#3B6D11] text-center font-['Holtwood_One_SC'] text-[64px] font-normal leading-normal flex w-[302px] h-[123px] flex-col items-center justify-center";
+
   const [items, setItems] = useState<SortableItem[]>([
     { id: 'item-1', target: 'middle', label: 'Answer 1' },
     { id: 'item-2', target: 'middle', label: 'Answer 2' },
@@ -44,9 +48,9 @@ const QuestionSort = () => {
         );
       }}
     >
-      <div>
+      <div className="bg-[#F7F5EE] min-h-screen">
         <div className="relative py-4">
-          <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">Sort these out!</h1>
+          <h1 className={`absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap ${headingTextClass}`}>Sort these out!</h1>
           <div className="absolute right-0 top-0">
             <Sidebar />
           </div>
@@ -55,30 +59,70 @@ const QuestionSort = () => {
         <div>
           <div className="flex justify-center items-start gap-8 mt-6">
             <div className="w-1/3 flex flex-col items-center">
-              <img src={safeFace} alt="Safe" />
-              <h2 className="mt-2">Safe</h2>
-              
+              <div className="flex items-center gap-3">
+                <img
+                  src={safeFace}
+                  alt="Safe"
+                  style={{
+                    width: 148,
+                    height: 148,
+                    aspectRatio: '1 / 1',
+                    background: `url(${safeFace}) lightgray -213px -807px / 1037.838% 691.892% no-repeat`,
+                  }}
+                />
+                <h2 className={headingTextClass}>Safe</h2>
+              </div>
               <SortBox id="left">
-                {leftItems.map(item => (
-                  <Sortable key={item.id} id={item.id}>{item.label}</Sortable>
-                ))}
+                <div className="w-[504px] h-[575px] rounded-[20px] bg-white shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+                  <div className="flex h-full w-full flex-col items-center justify-start gap-4 py-4">
+                    {leftItems.map(item => (
+                      <Sortable key={item.id} id={item.id}>
+                        <div className={sortableCardClass}>
+                          <span className="text-black text-center" style={{ fontFamily: 'Holtwood One SC', fontSize: 36, fontStyle: 'normal', fontWeight: 400, lineHeight: 'normal' }}>{item.label}</span>
+                        </div>
+                      </Sortable>
+                    ))}
+                  </div>
+                </div>
               </SortBox>
             </div>
 
             <div className="w-1/3 flex flex-col items-center self-center gap-2">
               {middleItems.map(item => (
-                <Sortable key={item.id} id={item.id}>{item.label}</Sortable>
+                <Sortable key={item.id} id={item.id}>
+                  <div className={sortableCardClass}>
+                    <span className="text-black text-center" style={{ fontFamily: 'Holtwood One SC', fontSize: 36, fontStyle: 'normal', fontWeight: 400, lineHeight: 'normal' }}>{item.label}</span>
+                  </div>
+                </Sortable>
               ))}
             </div>
 
             <div className="w-1/3 flex flex-col items-center">
-              <img src={safeFace} alt="Unsafe" />
-              <h2 className="mt-2">Unsafe</h2>
-              
+              <div className="flex items-center gap-3">
+                <img
+                  src={unsafeFace}
+                  alt="Unsafe"
+                  style={{
+                    width: 148,
+                    height: 148,
+                    aspectRatio: '1 / 1',
+                    background: `url(${unsafeFace}) lightgray -213px -807px / 1037.838% 691.892% no-repeat`,
+                  }}
+                />
+                <h2 className={headingTextClass}>Unsafe</h2>
+              </div>
               <SortBox id="right">
-                {rightItems.map(item => (
-                  <Sortable key={item.id} id={item.id}>{item.label}</Sortable>
-                ))}
+                <div className="w-[504px] h-[575px] rounded-[20px] bg-white shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
+                  <div className="flex h-full w-full flex-col items-center justify-start gap-4 py-4">
+                    {rightItems.map(item => (
+                      <Sortable key={item.id} id={item.id}>
+                        <div className={sortableCardClass}>
+                          <span className="text-black text-center" style={{ fontFamily: 'Holtwood One SC', fontSize: 36, fontStyle: 'normal', fontWeight: 400, lineHeight: 'normal' }}>{item.label}</span>
+                        </div>
+                      </Sortable>
+                    ))}
+                  </div>
+                </div>
               </SortBox>
             </div>
           </div>

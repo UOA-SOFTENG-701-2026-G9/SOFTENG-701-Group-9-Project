@@ -7,7 +7,7 @@ type SortBoxProps = React.PropsWithChildren<{ id: UniqueIdentifier }>;
 const SortBox = ({ id, children }: SortBoxProps) => {
   const { ref } = useDroppable({ id });
   return (
-    <div className="bg-[#F7F5EE]" ref={ref} style={{ width: 300, height: 300 }}>
+    <div ref={ref}>
       {children}
     </div>
   );
