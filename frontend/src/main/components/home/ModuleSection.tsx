@@ -22,7 +22,7 @@ const ModuleSection = () => {
         <ModuleCard text="Scammers" imgUrl="/home/Ruru.png" />
         <ModuleCard text="Cyberbullying" imgUrl="/home/Tane.png" />
       </div>
-      <Link to="/modules" className="px-32 py-2 bg-[#EF9F27] rounded-full hover:bg-[#D48A1A] transition-colors duration-200 items-center mt-20">
+      <Link to="/vn" className="px-32 py-2 bg-[#EF9F27] rounded-full hover:bg-[#D48A1A] transition-colors duration-200 items-center mt-20">
         <h2 className="text-white">
           Check it out
         </h2>
