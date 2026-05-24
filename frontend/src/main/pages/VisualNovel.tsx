@@ -120,7 +120,7 @@ function DialogueBox({
           {speaker}
         </span>
       </div>
-      <p className="max-w-[72ch] text-[clamp(1.15rem,2vw,1.75rem)] leading-[1.35] text-slate-800 md:text-[3rem]">
+      <p className="max-w-[72ch] text-[2.2rem] leading-[1.35] text-slate-800">
         {dialogue}
       </p>
       <div className="mt-3 text-right text-md font-medium text-slate-400 opacity-0 transition group-hover:opacity-100">
@@ -197,11 +197,11 @@ export function VisualNovelPlayer({ story, onEnd, className }: VisualNovelPlayer
     }
 
     if (scene.nextSceneId) {
-      if (scene.nextSceneId === "end-placeholder") {
+      setCurrentSceneId(scene.nextSceneId);
+      if (scene.id === "ctx1-email-game" || scene.id === "ctx2-popup-game") {
         setShowQuestionSort(true);
         return;
       }
-      setCurrentSceneId(scene.nextSceneId);
       return;
     }
 
@@ -282,10 +282,11 @@ export function VisualNovelPlayer({ story, onEnd, className }: VisualNovelPlayer
 /* -------------------------------------------------------------------------- */
 
 const exampleStory: Story = {
-  startSceneId: "koro-link-1",
+  startSceneId: "ctx1-email-intro",
   scenes: {
-    "koro-link-1": {
-      id: "koro-link-1",
+    // Context 1 — suspicious email
+    "ctx1-email-intro": {
+      id: "ctx1-email-intro",
       background: "/vn/backgrounds/lounge.png",
       left: {
         name: "Kōro",
@@ -294,18 +295,38 @@ const exampleStory: Story = {
         image: "/vn/characters/koro-idle.png",
       },
       right: {
-        name: "Ruru",
+        name: "",
         side: "right",
-        color: "#D69C1E",
-        image: "/vn/characters/ruru-happy.png",
+        color: "",
+        image: "transparent.png",
       },
-      speaker: "Ruru",
-      speakerColor: "#D69C1E",
-      dialogue: "Wow Kōro, you're so lucky! Quick, let's claim our million dollars now!",
-      nextSceneId: "koro-link-2",
+      speaker: "Kōro",
+      speakerColor: "#5B8E3E",
+      dialogue: "I tried really hard on my maths test, I hope I got 100%! Let's see if my teacher has emailed me my results.",
+      nextSceneId: "ctx1-email-intro2",
     },
-    "koro-link-2": {
-      id: "koro-link-2",
+    "ctx1-email-intro2": {
+      id: "ctx1-email-intro2",
+      background: "/vn/backgrounds/lounge.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-idle.png",
+      },
+      right: {
+        name: "",
+        side: "right",
+        color: "",
+        image: "transparent.png",
+      },
+      speaker: "",
+      speakerColor: "",
+      dialogue: "(Kōro finds an email that reads: 'Congratulations! You've won a free iPhone! Click the link to claim your prize.')",
+      nextSceneId: "ctx1-email-game",
+    },
+    "ctx1-email-game": {
+      id: "ctx1-email-game",
       background: "/vn/backgrounds/lounge.png",
       left: {
         name: "Kōro",
@@ -314,18 +335,18 @@ const exampleStory: Story = {
         image: "/vn/characters/koro-shock.png",
       },
       right: {
-        name: "Ruru",
+        name: "",
         side: "right",
-        color: "#D69C1E",
-        image: "/vn/characters/ruru-happy.png",
+        color: "",
+        image: "transparent.png",
       },
       speaker: "Kōro",
       speakerColor: "#5B8E3E",
-      dialogue: "R-really? But... can it really be this easy?",
-      nextSceneId: "koro-link-3",
+      dialogue: "A free iPhone™, wow! I really want one. My classmates will think I am so cool! Maybe I should fill in the form...",
+      nextSceneId: "ctx1-email-wrap",
     },
-    "koro-link-3": {
-      id: "koro-link-3",
+    "ctx1-email-wrap": {
+      id: "ctx1-email-wrap",
       background: "/vn/backgrounds/lounge.png",
       left: {
         name: "Kōro",
@@ -334,28 +355,41 @@ const exampleStory: Story = {
         image: "/vn/characters/koro-shock.png",
       },
       right: {
-        name: "Ruru",
+        name: "",
         side: "right",
-        color: "#D69C1E",
-        image: "/vn/characters/ruru-happy.png",
+        color: "",
+        image: "transparent.png",
       },
       speaker: "Kōro",
       speakerColor: "#5B8E3E",
-      dialogue: "R-really? But... can it really be this easy?",
-      choices: [
-        {
-          label: "This sounds too good to be true",
-          nextSceneId: "safe-path",
-        },
-        {
-          label: "FREE ROBUX!!!",
-          nextSceneId: "unsafe-path",
-        },
-      ],
+      dialogue: "That email looked real to me, but that's what scammers try to do. I'm glad I didn't click on that link - I have to tell my friend about this!",
+      nextSceneId: "ctx2-popup-intro",
     },
-    "safe-path": {
-      id: "safe-path",
-      background: "/vn/backgrounds/lounge.png",
+
+    // Context 2 — suspicious pop-up
+    "ctx2-popup-intro": {
+      id: "ctx2-popup-intro",
+      background: "/vn/backgrounds/bedroom.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-thinking.png",
+      },
+      right: {
+        name: "Ruru",
+        side: "right",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-idle.png",
+      },
+      speaker: "Kōro",
+      speakerColor: "#5B8E3E",
+      dialogue: "Hey Ruru, I almost got scammed! There was a suspicious email link saying I could win a free phone, but I'm glad I didn't click it. They could have stolen my email and passwords.",
+      nextSceneId: "ctx2-popup-game",
+    },
+    "ctx2-popup-game": {
+      id: "ctx2-popup-game",
+      background: "/vn/backgrounds/bedroom.png",
       left: {
         name: "Kōro",
         side: "left",
@@ -368,14 +402,14 @@ const exampleStory: Story = {
         color: "#D69C1E",
         image: "/vn/characters/ruru-worried.png",
       },
-      speaker: "Kōro",
-      speakerColor: "#5B8E3E",
-      dialogue: "I should stop and check with a trusted adult first. That link could be a scam!",
-      nextSceneId: "safe-path-2",
+      speaker: "Ruru",
+      speakerColor: "#D69C1E",
+      dialogue: "Oh that is dangerous, though I wonder if you can help me with this pop up. I was just playing Roblox and it appeared. I'm not sure if it's real, but it says I can win 1 million Robux! I really want it, what do you think?",
+      nextSceneId: "ctx2-popup-wrap",
     },
-    "safe-path-2": {
-      id: "safe-path-2",
-      background: "/vn/backgrounds/lounge.png",
+    "ctx2-popup-wrap": {
+      id: "ctx2-popup-wrap",
+      background: "/vn/backgrounds/bedroom.png",
       left: {
         name: "Kōro",
         side: "left",
@@ -390,31 +424,264 @@ const exampleStory: Story = {
       },
       speaker: "Ruru",
       speakerColor: "#D69C1E",
-      dialogue: "Good catch. Let's ask an adult and report it together!",
-      nextSceneId: "end-placeholder",
+      dialogue: "Oh wow, so this pop up was also a scam! I'm glad I closed it straight away without clicking on it - they could have stolen my Roblox account and passwords too!",
+      nextSceneId: "ctx2-popup-wrap2",
     },
-    "unsafe-path": {
-      id: "unsafe-path",
-      background: "/vn/backgrounds/lounge.png",
+    "ctx2-popup-wrap2": {
+      id: "ctx2-popup-wrap2",
+      background: "/vn/backgrounds/bedroom.png",
       left: {
         name: "Kōro",
         side: "left",
         color: "#5B8E3E",
-        image: "/vn/characters/koro-shock.png",
+        image: "/vn/characters/koro-thinking.png",
       },
       right: {
         name: "Ruru",
         side: "right",
         color: "#D69C1E",
-        image: "/vn/characters/ruru-worried.png",
+        image: "/vn/characters/ruru-thinking.png",
       },
       speaker: "Kōro",
       speakerColor: "#5B8E3E",
-      dialogue: "Oops — that page looks suspicious. I should have checked before clicking!",
-      nextSceneId: "end-placeholder",
+      dialogue: "I'm glad we thought about it first before believing it. I wonder if we should warn anyone else about scams before they click on something suspicious...",
+      nextSceneId: "ctx3-account-intro",
     },
-    "end-placeholder": {
-      id: "end-placeholder",
+
+    // Context 3 — suspicious new friend / account sharing
+    "ctx3-account-intro": {
+      id: "ctx3-account-intro",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-idle.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-idle.png",
+      },
+      speaker: "Kōro",
+      speakerColor: "#5B8E3E",
+      dialogue: "Hey Āroha, Ruru and I got suspicious scam messages but we didn't click on them because they could've stolen our accounts! I think you should be careful if you get a scam message too.",
+      nextSceneId: "ctx3-account-intro2",
+    },
+    "ctx3-account-intro2": {
+      id: "ctx3-account-intro2",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-idle.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-shock.png",
+      },
+      speaker: "Āroha",
+      speakerColor: "#E67AA5",
+      dialogue: "Oh, thanks for warning me. I'm glad I didn't get any suspicious links or pop ups.",
+      nextSceneId: "ctx3-account-intro3",
+    },
+    "ctx3-account-intro3": {
+      id: "ctx3-account-intro3",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-idle.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-shock.png",
+      },
+      speaker: "Ruru",
+      speakerColor: "#D69C1E",
+      dialogue: "Yeah, we should be careful online. Anyway, what are you doing?",
+      nextSceneId: "ctx3-account-intro4",
+    },
+    "ctx3-account-intro4": {
+      id: "ctx3-account-intro4",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-idle.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-happy.png",
+      },
+      speaker: "Āroha",
+      speakerColor: "#E67AA5",
+      dialogue: "I made a new friend on minecraft! But we can't play right now because their account stopped working.",
+      nextSceneId: "ctx3-account-intro5",
+    },
+    "ctx3-account-intro5": {
+      id: "ctx3-account-intro5",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-idle.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-idle.png",
+      },
+      speaker: "Āroha",
+      speakerColor: "#E67AA5",
+      dialogue: "They asked to borrow my account so they can finish their building. They said they will be quick and I just need to give them my email and password.",
+      nextSceneId: "ctx3-account-intro6",
+    },
+    "ctx3-account-intro6": {
+      id: "ctx3-account-intro6",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-thinking.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-idle.png",
+      },
+      speaker: "Kōro",
+      speakerColor: "#5B8E3E",
+      dialogue: "Hmm, is it really smart to give them your account?",
+      nextSceneId: "ctx3-account-choice",
+    },
+    "ctx3-account-choice": {
+      id: "ctx3-account-choice",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Kōro",
+        side: "left",
+        color: "#5B8E3E",
+        image: "/vn/characters/koro-thinking.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-idle.png",
+      },
+      speaker: "Kōro",
+      speakerColor: "#5B8E3E",
+      dialogue: "Hmm, is it really smart to give them your account?",
+      choices: [
+        {
+          label: "Warn her to stop and think first",
+          nextSceneId: "ctx3-path-1",
+        },
+        {
+          label: "Ask if the friend is really trustworthy",
+          nextSceneId: "ctx3-path-2",
+        },
+      ],
+    },
+    "ctx3-path-1": {
+      id: "ctx3-path-1",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-thinking.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-thinking.png",
+      },
+      speaker: "Ruru",
+      speakerColor: "#D69C1E",
+      dialogue: "A new online friend is still a stranger. I think it's safer to check first before giving away account details.",
+      nextSceneId: "ctx3-path-end",
+    },
+    "ctx3-path-2": {
+      id: "ctx3-path-2",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-thinking.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-thinking.png",
+      },
+      speaker: "Ruru",
+      speakerColor: "#D69C1E",
+      dialogue: "Are you sure they are trustworthy? Even if they seem nice, they could still be a scammer trying to steal your account.",
+      nextSceneId: "ctx3-path-end",
+    },
+    "ctx3-path-end": {
+      id: "ctx3-path-end",
+      background: "/vn/backgrounds/half.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-thinking.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-shock.png",
+      },
+      speaker: "Āroha",
+      speakerColor: "#E67AA5",
+      dialogue: "Hmm, you're right. I shouldn't share my email or password with someone I only just met online. That could give them control of my account.",
+      nextSceneId: "ctx4-learning",
+    },
+
+    // Context 4 — learning outcomes / wrap-up
+    "ctx4-learning": {
+      id: "ctx4-learning",
+      background: "/vn/backgrounds/lounge.png",
+      left: {
+        name: "Ruru",
+        side: "left",
+        color: "#D69C1E",
+        image: "/vn/characters/ruru-happy.png",
+      },
+      right: {
+        name: "Āroha",
+        side: "right",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-happy.png",
+      },
+      speaker: "Āroha",
+      speakerColor: "#E67AA5",
+      dialogue: "I almost trusted them, but they turned out to be a scammer! Thank you both for warning me before I shared my account details with them. They could have stolen my account and invaded my privacy.",
+      nextSceneId: "ctx4-end",
+    },
+    "ctx4-end": {
+      id: "ctx4-end",
       background: "/vn/backgrounds/lounge.png",
       left: {
         name: "Kōro",
@@ -423,15 +690,15 @@ const exampleStory: Story = {
         image: "/vn/characters/koro-happy.png",
       },
       right: {
-        name: "Ruru",
+        name: "Āroha",
         side: "right",
-        color: "#D69C1E",
-        image: "/vn/characters/ruru-happy.png",
+        color: "#E67AA5",
+        image: "/vn/characters/aroha-happy.png",
       },
       speaker: "Kōro",
       speakerColor: "#5B8E3E",
-      dialogue: "Now I know what to look out for. Let's keep going!",
-      nextSceneId: "koro-link-1",
+      dialogue: "No worries, Āroha. We should all be safe online and think twice before sharing information or clicking on suspicious links. It could have been really dangerous if a stranger had control over our private information.",
+      nextSceneId: "ctx4-end",
     },
   },
 };
