@@ -6,6 +6,7 @@ import About from './pages/about'
 import Modules from './pages/modules'
 import Footer from './components/Footer'
 import VisualNovelDemo from './pages/VisualNovel.tsx'
+import AILearning from './pages/AILearning'
 function App() {
   const location = useLocation()
   const hideChrome = location.pathname.startsWith('/vn')
@@ -18,6 +19,7 @@ function App() {
         <Route path="/modules" element={<Modules />} />
         <Route path="/about" element={<About />} />
         <Route path="/vn" element={<VisualNovelDemo />} />
+        <Route path="/ai-learning" element={<AILearning />} />
       </Routes>
       {!hideChrome && <Footer />}
     </div>
