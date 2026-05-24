@@ -7,7 +7,7 @@ const Footer = () => {
         <img src="/chibis 3.png" alt="logo" className="w-auto h-auto mx-2" />
         <img src="/chibis 4.png" alt="logo" className="w-auto h-auto mx-2" />
       </div>
-      <p>Copyright @ 2026</p>
+      <p className="text-white">Copyright @ 2026</p>
     </div>
   )
 }

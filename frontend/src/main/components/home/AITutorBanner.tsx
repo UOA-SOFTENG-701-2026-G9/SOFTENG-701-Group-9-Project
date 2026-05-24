@@ -17,7 +17,7 @@ const AITutorBanner = () => {
             to="/ai-learning"
             className="inline-block px-10 py-3 bg-[#EF9F27] rounded-full hover:bg-[#D48A1A] transition-colors duration-200"
           >
-            <span className="text-white font-semibold text-lg">Start chatting →</span>
+            <span className="text-[#0F3B2E] font-semibold text-lg">Start chatting →</span>
           </Link>
         </div>
         <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/15 flex items-center justify-center text-7xl md:text-8xl">

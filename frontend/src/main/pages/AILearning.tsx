@@ -134,9 +134,9 @@ const AILearning = () => {
             }
             if (item.kind === "answer" || item.kind === "followup-q") {
               return (
-                <div key={i} className="self-end max-w-[85%] bg-[#EF9F27] text-white rounded-2xl rounded-tr-sm px-4 py-3">
-                  <p className="text-xs uppercase tracking-wide opacity-80 mb-1">You</p>
-                  <p className="text-base leading-relaxed">{item.text}</p>
+                <div key={i} className="self-end max-w-[85%] bg-[#EF9F27] text-[#0F3B2E] rounded-2xl rounded-tr-sm px-4 py-3">
+                  <p className="text-xs uppercase tracking-wide opacity-70 mb-1 text-[#0F3B2E]">You</p>
+                  <p className="text-base leading-relaxed text-[#0F3B2E]">{item.text}</p>
                 </div>
               )
             }
@@ -217,7 +217,7 @@ const AILearning = () => {
             <button
               onClick={loadNewQuestion}
               disabled={inputBusy}
-              className="self-center px-10 py-3 rounded-full bg-[#EF9F27] text-white font-semibold hover:bg-[#D48A1A] disabled:opacity-50 transition-colors mt-2"
+              className="self-center px-10 py-3 rounded-full bg-[#EF9F27] text-[#0F3B2E] font-semibold hover:bg-[#D48A1A] disabled:opacity-50 transition-colors mt-2"
             >
               Next Question →
             </button>
