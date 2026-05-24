@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { DragDropProvider } from '@dnd-kit/react';
 
-import Sidebar from "../components/question-sort/Sidebar.tsx"
 import SortBox from "../components/question-sort/SortBox.tsx"
 import Sortable from "../components/question-sort/Sortable.tsx";
 
@@ -14,7 +13,12 @@ interface SortableItem {
   label: string;
 }
 
-const QuestionSort = () => {
+type QuestionSortProps = {
+  embedded?: boolean;
+  onSubmit?: () => void;
+};
+
+const QuestionSort = ({ embedded = false, onSubmit }: QuestionSortProps) => {
   const sortableCardClass = "w-[389px] h-[77px] rounded-[20px] border-[5px] border-[#3B6D11] bg-white flex items-center justify-center";
   const headingTextClass = "text-[#3B6D11] text-center font-['Holtwood_One_SC'] text-[64px] font-normal leading-normal flex w-[302px] h-[123px] flex-col items-center justify-center";
 
@@ -28,6 +32,7 @@ const QuestionSort = () => {
   const middleItems = items.filter(i => i.target === 'middle');
   const leftItems = items.filter(i => i.target === 'left');
   const rightItems = items.filter(i => i.target === 'right');
+  const allItemsSorted = middleItems.length === 0;
 
   return (
     <DragDropProvider
@@ -48,11 +53,10 @@ const QuestionSort = () => {
         );
       }}
     >
-      <div className="bg-[#F7F5EE] min-h-screen">
+      <div className={embedded ? "relative h-full bg-[#F7F5EE] overflow-auto" : "relative min-h-screen bg-[#F7F5EE]"}>
         <div className="relative py-4">
           <h1 className={`absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap ${headingTextClass}`}>Sort these out!</h1>
           <div className="absolute right-0 top-0">
-            <Sidebar />
           </div>
         </div>
 
@@ -127,6 +131,18 @@ const QuestionSort = () => {
             </div>
           </div>
         </div>
+
+        {allItemsSorted ? (
+          <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+            <button
+              type="button"
+              onClick={onSubmit}
+              className="rounded-full bg-[#3B6D11] px-10 py-4 text-2xl font-bold text-white shadow-[0_12px_24px_rgba(0,0,0,0.22)] transition hover:bg-[#2f560d]"
+            >
+              Submit
+            </button>
+          </div>
+        ) : null}
       </div>
     </DragDropProvider>
   )

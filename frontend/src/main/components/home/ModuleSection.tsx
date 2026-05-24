@@ -17,7 +17,10 @@ const ModuleSection = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full px-24">
-        <ModuleCard text="Interacting with people online" imgUrl="/home/Koro.png" />
+        <Link to="/vn">
+          <ModuleCard text="Interacting with people online" imgUrl="/home/Koro.png" />
+        </Link>
+        
         <ModuleCard text="Viruses & Malware" imgUrl="/home/Aroha.png" />
         <ModuleCard text="Scammers" imgUrl="/home/Ruru.png" />
         <ModuleCard text="Cyberbullying" imgUrl="/home/Tane.png" />

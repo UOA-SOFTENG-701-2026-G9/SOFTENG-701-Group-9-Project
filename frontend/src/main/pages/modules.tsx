@@ -7,14 +7,14 @@ const Modules = () => {
 			<HeroBanner title="Modules" subtitle="Play through short stories that teach you important things about good cyber safety." />
 
       <div className="flex flex-col px-40 grid-lessons my-32 gap-8">
-        <ModuleCardFull
+				<ModuleCardFull
 					moduleNum={1}
 					title="Interacting with people online" 
 					description="Help Tāne and Ruru learn how to interact with other people online!"
 					imgUrl="/card.png"
-					linkUrl="/modules"
+					linkUrl="/vn"
 				/> 
-          
+						
 				<ModuleCardFull
 					moduleNum={2}
 					title="Viruses & Malware" 

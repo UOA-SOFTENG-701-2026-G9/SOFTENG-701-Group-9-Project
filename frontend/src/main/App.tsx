@@ -5,8 +5,7 @@ import Home from './pages/home'
 import About from './pages/about'
 import Modules from './pages/modules'
 import Footer from './components/Footer'
-import VisualNovelDemo from './components/vn/VisualNovel'
-
+import VisualNovelDemo from './pages/VisualNovel.tsx'
 function App() {
   const location = useLocation()
   const hideChrome = location.pathname.startsWith('/vn')
