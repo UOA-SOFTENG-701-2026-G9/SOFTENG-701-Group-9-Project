@@ -266,8 +266,7 @@ export function VisualNovelPlayer({ story, onEnd, className }: VisualNovelPlayer
               <QuestionSort
                 embedded
                 onSubmit={() => {
-                  setShowQuestionSort(false);
-                  setCurrentSceneId("end-placeholder");
+                  // Keep the popup open after submit so only the Close button dismisses it.
                 }}
               />
             </div>
