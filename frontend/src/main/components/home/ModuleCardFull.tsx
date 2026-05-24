@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
-const ModuleCardFull = ({title, description, imgUrl, linkUrl}) => {
+interface ModuleCardFullProps {
+  title: string
+  description: string
+  imgUrl: string 
+  linkUrl: string;
+}
+
+const ModuleCardFull = ({title, description, imgUrl, linkUrl}: ModuleCardFullProps) => {
   return (
    <div className="px-4 max-w-1/2 min-w-80"> 
         <article className="mb-4 bg-gray-800 rounded overflow-hidden shadow-lg"> 

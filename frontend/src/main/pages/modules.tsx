@@ -10,7 +10,7 @@ const Modules = () => {
 	<p className="py-2">Pick a topic to start learning!</p>
       </header>
 
-      <div class="flex flex-wrap px-10 -mb-4 grid-lessons">
+      <div className="flex flex-wrap px-10 -mb-4 grid-lessons">
         <ModuleCardFull 
 	  title="Interacting with people online" 
 	  description="Help Tāne and Ruru learn how to interact with other people online!"
