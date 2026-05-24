@@ -2,68 +2,52 @@ import learnImg from "../../resources/assets/images/Learn.png"
 import practiceImg from "../../resources/assets/images/Practice.png"
 import castImg from "../../resources/assets/images/Meet Our Cast.png"
 
-
 // Load Holtwood One SC from Google Fonts
 const fontLink = document.createElement("link")
 fontLink.href = "https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap"
 fontLink.rel = "stylesheet"
 document.head.appendChild(fontLink)
 
-const HEADING_FONT = "'Holtwood One SC', serif"
 const teamNames = "Henry, Will, Amir, Alex, Toma, Moksh, Thomas"
 
 export default function About() {
   return (
-    <div style={{ background: "#F5F0E8", minHeight: "100vh", fontFamily: "system-ui, sans-serif" }}>
+    <div className="bg-[#F5F0E8] min-h-screen font-sans">
 
       {/* ── HERO HEADER ── */}
-      <section style={{
-        background: "linear-gradient(180deg, #0F6E56 0%, #1a8a6a 100%)",
-        padding: "60px 5vw 48px",
-        textAlign: "center",
-      }}>
-        <h1 style={{
-          fontSize: "clamp(48px, 8vw, 80px)",
-          fontWeight: 400,
-          color: "#ffffff",
-          margin: "0 0 16px",
-          fontFamily: HEADING_FONT,
-        }}>
+      <section className="bg-gradient-to-b from-[#0F6E56] to-[#1a8a6a] px-[5vw] pt-16 pb-12 text-center">
+        <h1
+          className="text-white mb-4 text-5xl md:text-7xl font-normal"
+          style={{ fontFamily: "'Holtwood One SC', serif" }}
+        >
           701 T9
         </h1>
-        <p style={{
-          fontSize: "clamp(14px, 2vw, 18px)",
-          color: "rgba(255,255,255,0.85)",
-          margin: 0,
-          fontWeight: 500,
-        }}>
+        <p className="text-white/85 font-medium text-sm md:text-lg">
           {teamNames}
         </p>
       </section>
 
       {/* ── AMBER ACCENT BAR ── */}
-      <div style={{ height: 14, background: "#E8A020" }} />
+      <div className="h-[14px] bg-[#E8A020]" />
 
       {/* ── LEARN & PRACTICE CARDS ── */}
-      <section style={{ padding: "56px 5vw", display: "flex", flexDirection: "column", gap: 24, maxWidth: 820, margin: "0 auto" }}>
+      <section className="px-[5vw] py-14 flex flex-col gap-6 max-w-[820px] mx-auto">
 
         {/* Learn card */}
-        <div style={{
-          background: "#ffffff",
-          borderRadius: 20,
-          padding: "32px 36px",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-          display: "flex",
-          alignItems: "center",
-          gap: 28,
-        }}>
-          <img src={learnImg} alt="Learn" style={{ width: 110, height: "auto", flexShrink: 0, objectFit: "contain" }} />
+        <div className="bg-white rounded-2xl px-9 py-8 shadow-md flex items-center gap-7">
+          <img
+            src={learnImg}
+            alt="Learn"
+            className="w-28 h-auto shrink-0 object-contain"
+          />
           <div>
-            <h2 style={{
-              fontSize: 28, fontWeight: 400, color: "#2d5a1b",
-              margin: "0 0 14px", fontFamily: HEADING_FONT,
-            }}>Learn</h2>
-            <ul style={{ margin: 0, padding: "0 0 0 18px", color: "#2d5a1b", fontSize: 15, lineHeight: 2 }}>
+            <h2
+              className="text-[#2d5a1b] text-3xl font-normal mb-3"
+              style={{ fontFamily: "'Holtwood One SC', serif" }}
+            >
+              Learn
+            </h2>
+            <ul className="list-disc pl-5 text-[#2d5a1b] text-sm leading-loose">
               <li>Know when your cyber safety is in trouble</li>
               <li>Be able to handle cyber safety attacks</li>
               <li>Be able to prevent cyber attacks and stop future ones</li>
@@ -72,55 +56,44 @@ export default function About() {
         </div>
 
         {/* Practice card */}
-        <div style={{
-          background: "#ffffff",
-          borderRadius: 20,
-          padding: "32px 36px",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 28,
-        }}>
-          <p style={{
-            fontSize: 15, color: "#3a3a3a", lineHeight: 1.75,
-            margin: 0, maxWidth: 420, textAlign: "center", flex: 1,
-          }}>
+        <div className="bg-white rounded-2xl px-9 py-8 shadow-md flex items-center justify-between gap-7">
+          <p className="text-[#3a3a3a] text-sm leading-7 text-center flex-1 max-w-[420px]">
             Jump into fun stories and mini-games to practise staying safe online! Each module is a mini-adventure that teaches you one cool cyber safety skill.
           </p>
-          <div style={{ textAlign: "right", flexShrink: 0 }}>
-            <h2 style={{
-              fontSize: 28, fontWeight: 400, color: "#2d5a1b",
-              margin: "0 0 14px", fontFamily: HEADING_FONT,
-              textAlign: "right",
-            }}>Practice</h2>
-            <img src={practiceImg} alt="Practice" style={{ width: 100, height: "auto", objectFit: "contain" }} />
+          <div className="text-right shrink-0">
+            <h2
+              className="text-[#2d5a1b] text-3xl font-normal mb-3 text-right"
+              style={{ fontFamily: "'Holtwood One SC', serif" }}
+            >
+              Practice
+            </h2>
+            <img
+              src={practiceImg}
+              alt="Practice"
+              className="w-24 h-auto object-contain"
+            />
           </div>
         </div>
       </section>
 
       {/* ── DIVIDER ── */}
-      <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 5vw" }}>
-        <div style={{ height: 2, background: "#3B6D11", borderRadius: 2 }} />
+      <div className="max-w-[820px] mx-auto px-[5vw]">
+        <div className="h-0.5 bg-[#3B6D11] rounded" />
       </div>
 
       {/* ── MEET OUR CAST ── */}
-      <section style={{ padding: "56px 5vw", maxWidth: 820, margin: "0 auto" }}>
-        <div style={{
-          background: "#ffffff",
-          borderRadius: 20,
-          padding: "36px",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-        }}>
-          <h2 style={{
-            fontSize: 32, fontWeight: 400, color: "#2d5a1b",
-            margin: "0 0 28px", fontFamily: HEADING_FONT,
-            textAlign: "center",
-          }}>Meet Our Cast</h2>
+      <section className="px-[5vw] py-14 max-w-[820px] mx-auto">
+        <div className="bg-white rounded-2xl p-9 shadow-md">
+          <h2
+            className="text-[#2d5a1b] text-4xl font-normal mb-7 text-center"
+            style={{ fontFamily: "'Holtwood One SC', serif" }}
+          >
+            Meet Our Cast
+          </h2>
           <img
             src={castImg}
             alt="Meet our cast — Tāne, Āroha, Kōro, Ruru"
-            style={{ width: "100%", height: "auto", borderRadius: 12, display: "block" }}
+            className="w-full h-auto rounded-xl block"
           />
         </div>
       </section>
