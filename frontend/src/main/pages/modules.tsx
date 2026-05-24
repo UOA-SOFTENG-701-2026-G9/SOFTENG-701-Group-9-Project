@@ -1,47 +1,44 @@
-import ModuleCardFull from "../components/home/ModuleCardFull";
+import HeroBanner from "../components/HeroBanner";
+import ModuleCardFull from "../components/modules/ModuleCardFull";
 
 const Modules = () => {
-
   return (
-    <div>
-      <header className="px-10 mb-4">
-        <h1>Modules</h1>
-        <p>Welcome to the modules page!</p>
-	<p className="py-2">Pick a topic to start learning!</p>
-      </header>
+    <div className="flex flex-col bg-[#F7F5EE]">
+			<HeroBanner title="Modules" subtitle="Play through short stories that teach you important things about good cyber safety." />
 
-      <div className="flex flex-wrap px-10 -mb-4 grid-lessons">
-        <ModuleCardFull 
-	  title="Interacting with people online" 
-	  description="Help Tāne and Ruru learn how to interact with other people online!"
-	  imgUrl="/public/card.png"
-	  linkUrl="/modules"
-	/> 
+      <div className="flex flex-col px-40 grid-lessons my-32 gap-8">
+        <ModuleCardFull
+					moduleNum={1}
+					title="Interacting with people online" 
+					description="Help Tāne and Ruru learn how to interact with other people online!"
+					imgUrl="/card.png"
+					linkUrl="/modules"
+				/> 
           
-	<ModuleCardFull 
-	  title="Viruses & Malware" 
-	  description="Tāne and Ruru explore what happens if you get infected with a virus!"
-	  imgUrl="/public/card.png"
-	  linkUrl="/modules"
-	/> 
+				<ModuleCardFull
+					moduleNum={2}
+					title="Viruses & Malware" 
+					description="Tāne and Ruru explore what happens if you get infected with a virus!"
+					imgUrl="/card.png"
+					linkUrl="/modules"
+				/> 
 
-	<ModuleCardFull 
-	  title="Scammers" 
-	  description="Tāne gets a message offering him free robux!"
-	  imgUrl="/public/card.png"
-	  linkUrl="/modules"
-	/> 
+				<ModuleCardFull 
+					moduleNum={3}
+					title="Scammers" 
+					description="Tāne gets a message offering him free robux!"
+					imgUrl="/card.png"
+					linkUrl="/modules"
+				/> 
 
-	<ModuleCardFull 
-	  title="Cyberbullying" 
-	  description="Someone is messaging Tāne mean messages! Can Ruru help?"
-	  imgUrl="/public/card.png"
-	  linkUrl="/modules"
-	/> 
-
+				<ModuleCardFull 
+					moduleNum={4}
+					title="Cyberbullying" 
+					description="Someone is messaging Tāne mean messages! Can Ruru help?"
+					imgUrl="/card.png"
+					linkUrl="/modules"
+				/> 
       </div>
-
-      <div className="px-4 py-4"></div>
     </div>
   )
 }
