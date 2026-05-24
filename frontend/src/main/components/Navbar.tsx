@@ -12,6 +12,11 @@ const Navbar = () => {
             Learn
           </h3>
         </Link>
+        <Link to="/ai-learning">
+          <h3 className="hover:opacity-70">
+            AI Tutor
+          </h3>
+        </Link>
         <Link to="/about">
           <h3 className="hover:opacity-70">
             About
