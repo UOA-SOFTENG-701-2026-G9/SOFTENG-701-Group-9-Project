@@ -26,6 +26,7 @@ const AILearning = () => {
   const [error, setError] = useState<string | null>(null)
   const askedHistory = useRef<string[]>([])
   const scrollRef = useRef<HTMLDivElement | null>(null)
+  const initializedRef = useRef(false)
 
   const callApi = async (body: object) => {
     const res = await fetch(`${API_URL}/api/ai-learning`, {
@@ -59,6 +60,8 @@ const AILearning = () => {
   }
 
   useEffect(() => {
+    if (initializedRef.current) return
+    initializedRef.current = true
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadNewQuestion()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -126,9 +129,9 @@ const AILearning = () => {
           {chat.map((item, i) => {
             if (item.kind === "question") {
               return (
-                <div key={i} className="self-start max-w-[85%] bg-[#0F6E56] text-white rounded-2xl rounded-tl-sm px-4 py-3">
-                  <p className="text-xs uppercase tracking-wide opacity-80 mb-1">AI Tutor</p>
-                  <p className="text-base leading-relaxed">{item.text}</p>
+                <div key={i} className="self-start max-w-[85%] bg-[#1a8a6a] text-white rounded-2xl rounded-tl-sm px-4 py-3">
+                  <p className="text-xs uppercase tracking-wide opacity-80 mb-1 text-white">AI Tutor</p>
+                  <p className="text-base leading-relaxed text-white">{item.text}</p>
                 </div>
               )
             }
@@ -150,9 +153,9 @@ const AILearning = () => {
               )
             }
             return (
-              <div key={i} className="self-start max-w-[85%] bg-[#E6F0EC] text-[#1f3a0d] rounded-2xl rounded-tl-sm px-4 py-3">
-                <p className="text-xs uppercase tracking-wide opacity-70 mb-1">AI Tutor</p>
-                <p className="text-base leading-relaxed">{item.text}</p>
+              <div key={i} className="self-start max-w-[85%] bg-[#1a8a6a] text-white rounded-2xl rounded-tl-sm px-4 py-3">
+                <p className="text-xs uppercase tracking-wide opacity-80 mb-1 text-white">AI Tutor</p>
+                <p className="text-base leading-relaxed text-white">{item.text}</p>
               </div>
             )
           })}
