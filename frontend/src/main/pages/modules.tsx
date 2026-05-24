@@ -4,10 +4,10 @@ const Modules = () => {
 
   return (
     <div>
-      <header class="px-10 mb-4">
+      <header className="px-10 mb-4">
         <h1>Modules</h1>
         <p>Welcome to the modules page!</p>
-	<p class="py-2">Pick a topic to start learning!</p>
+	<p className="py-2">Pick a topic to start learning!</p>
       </header>
 
       <div class="flex flex-wrap px-10 -mb-4 grid-lessons">
@@ -41,7 +41,7 @@ const Modules = () => {
 
       </div>
 
-      <div class="px-4 py-4"></div>
+      <div className="px-4 py-4"></div>
     </div>
   )
 }
