@@ -1,3 +1,4 @@
+import { Check, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,7 @@ export type Question = {
   question: string;
   options: string[];
   answer: number; // index of correct option
+  reasoning?: string; // optional explanation for the answer
 };
 
 const QuizComponent = ({ questions }: { questions: Question[] }) => {
@@ -47,8 +49,8 @@ const QuizComponent = ({ questions }: { questions: Question[] }) => {
         <h2 className="text-2xl font-semibold mb-4">Quiz complete</h2>
         <p className="mb-4">You scored {score} of {questions.length}.</p>
         <div className="flex flex-row gap-3">
-          <button onClick={handleRestart} className="px-4 py-2 bg-blue-600 text-white rounded">Restart</button>
-          <Link to="/modules" className="px-4 py-2 bg-blue-600 text-white rounded">Leave Episode</Link>
+          <button onClick={handleRestart} className="px-4 py-2 bg-[#EF9F27] hover:bg-[#D48C20] text-white rounded">Restart</button>
+          <Link to="/modules" className="px-4 py-2 bg-[#EF9F27] hover:bg-[#D48C20] text-white rounded">Leave Episode</Link>
         </div>
       </div>
     );
@@ -87,6 +89,8 @@ const QuizComponent = ({ questions }: { questions: Question[] }) => {
                   {String.fromCharCode(65 + i)}
                 </div>
                 <div>{opt}</div>
+                {isCorrect && <Check className="text-green-500" size={20} />}
+                {isWrong && <X className="text-red-500" size={20} />}
               </div>
             </button>
           );
@@ -95,21 +99,25 @@ const QuizComponent = ({ questions }: { questions: Question[] }) => {
 
       <div className="mt-6 flex gap-3">
         {!submitted ? (
-          <>
-            <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded" disabled={selected === null}>
-              Submit
-            </button>
-            <button onClick={handleRestart} className="px-4 py-2 bg-gray-200 rounded">Restart</button>
-          </>
+          <button onClick={handleSubmit} className="px-4 py-2 bg-[#EF9F27] hover:bg-[#D48C20] text-white rounded" disabled={selected === null}>
+            Submit
+          </button>
         ) : (
           <>
             <div className="flex-1 text-sm text-gray-700">
-              {selected === q.answer ? "Correct!" : `Incorrect — correct answer: ${String.fromCharCode(65 + q.answer)}`}
+              {selected === q.answer ? 
+                <p className="text-green-500">Correct!</p> 
+              : 
+                <>
+                  <p className="text-red-500">Incorrect — correct answer: {String.fromCharCode(65 + q.answer)}</p>
+                  {q.reasoning && <p className="text-sm mt-2 text-red-500">{q.reasoning}</p>}
+                </>
+              }
             </div>
             {index + 1 < questions.length ? (
-              <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">Next</button>
+              <button onClick={handleNext} className="px-4 py-2 bg-[#EF9F27] hover:bg-[#D48C20] text-white rounded">Next</button>
             ) : (
-              <button onClick={() => setIndex(questions.length)} className="px-4 py-2 bg-green-600 text-white rounded">See results</button>
+              <button onClick={() => setIndex(questions.length)} className="px-4 py-2 bg-[#EF9F27] hover:bg-[#D48C20] text-white rounded">See results</button>
             )}
           </>
         )}
