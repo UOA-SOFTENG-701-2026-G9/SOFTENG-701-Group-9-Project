@@ -1,0 +1,33 @@
+import { QuizComponent, type Question } from "../components/quiz/quiz";
+
+const quizQuestions: Question[] = [
+  {
+    question: "Who is the best person to talk to if you have downloaded a suspicious file?",
+    options: [
+      "Your friend who is good with computers.",
+      "Your teacher or a trusted adult.",
+      "The person who sent you the file.",
+      "Ignore it and hope for the best."
+    ],
+    answer: 1
+  },
+  {
+    question: "What should you do if someone you don't know asks for your password?",
+    options: ["Give it to them if they seem nice","Refuse and tell a trusted adult","Change your password later","Share it with friends"],
+    answer: 1
+  },
+  {
+    question: "Which of the following is a strong password?",
+    options: ["password123","123456","G!7b#S9x","qwerty"],
+    answer: 2
+  }
+];
+
+export default function QuizPage() {
+  return (
+    <div className="flex flex-col items-center bg-[#F7F5EE] min-h-screen py-16">
+      <h1 className="text-4xl font-bold text-center mb-8">Module 1 Quiz</h1>
+      <QuizComponent questions={quizQuestions} />
+    </div>
+  );
+}
